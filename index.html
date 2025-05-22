@@ -1,38 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="lightstyles.css">
-        <title>Dark / Light Mode sur un formulaire</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+  }
+</script>
+</head>
+<body class=" h-screen bg-gray-200 dark:bg-gray-800 flex flex-col justify-start items-center ">   
+<button id="darkModeToggle" class="fixed top-5 right-5 z-50 bg-gray-800 dark:bg-gray-200 text-white
+ dark:text-gray-800 px-4 py-2 rounded-full shadow-lg hover:shadow-xl
+  transition-all duration-300 flex items-center gap-2 font-medium hover:scale-105">
+  <span id="toggleIcon">🌙</span>
+  <span id="toggleText">Dark</span>
+</button>
+    <header class="bg-black h-[20%] w-[100%] flex justify-center items-center">
+        <h1 class="text-6xl text-white font-bold">CSS FLEXBOX FORM</h1>
+    </header>
+    <div class=" pt-12 h-[55vh] w-[60%] max-w-[650px] mb-[17vh]">
+        <form action="hi there" class="flex flex-col justify-center dark:bg-gray-700 items-center h-[80%] w-[100%] bg-gray-300 rounded-lg shadow-lg">
+            <label class="text-lg text-black dark:text-gray-200" for="item1">NAME</label>
+            <input class="border-2 border-black dark:border-white dark:text-gray-200 w-[80%] p-2 mb-4 rounded-[5px]" type="text" id="item1" placeholder="Enter your name">
+            <label class="text-lg text-black dark:text-gray-200" for="item2">EMAIL</label>
+            <input class="border-2 border-black dark:border-white dark:text-gray-200 w-[80%] p-2 mb-4 rounded-[5px]" type="email" id="item2"  placeholder="Enter your email">
+            <label class="text-lg text-black dark:text-gray-200" for="item3">PHONE NUMBER</label>
+            <input class="border-2 border-black dark:border-white dark:text-gray-200 w-[80%] p-2 mb-4 rounded-[5px]" type=" tel" id="item3"  placeholder="Enter your phone number">
+            <button class="bg-blue-500 w-[50%] h-10 mt-2 dark:bg-blue-600 dark:hover:bg-blue-700 rounded-[5px] text-white hover:bg-blue-600" >ENTER</button>
 
-    <body>
-        <div class="up">
-            CSS FLEXBOX FORM
-            <a target="_parent" href="dark.html">
-                <img class="imag" src="images/dark.png" >
-            </a>
-        </div>
-            <h2 class="title">Please Fill Out This Form</h2>
-        <form class="theform">
-            
-            <div>
-                <div class="lab">
-                <label for="name">NAME</label>
-                <input id="name" type="text">
-                </div>
-                <div class="lab">
-                <label for="email">EMAIL</label>
-                <input id="email" type="email">
-                </div>
-                <div class="lab">
-                <label for="phone">PHONE NUMBER</label>
-                <input id="phone" type="text">
-                </div>
-            </div>
-            
-            <button type="submit">ENTER</button>
         </form>
-    </body>
+    </div>
+    <foo  ter class=" w-full bg-black h-[80px] w-[100%] flex justify-center items-center">
+            <div class="text-sm text-white">Created by mohamed</div>
+    </footer>
+
+
+<script>
+// Dark mode functionality
+const darkModeToggle = document.getElementById('darkModeToggle');
+const toggleIcon = document.getElementById('toggleIcon');
+const toggleText = document.getElementById('toggleText');
+const html = document.documentElement;
+
+// Check for saved dark mode preference or default to light mode
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+if (isDarkMode) {
+  html.classList.add('dark');
+  toggleIcon.textContent = '☀️';
+  toggleText.textContent = 'Light';
+}
+
+// Toggle dark mode
+darkModeToggle.addEventListener('click', () => {
+  html.classList.toggle('dark');
+  const isNowDark = html.classList.contains('dark');
+  
+  // Update button appearance
+  if (isNowDark) {
+    toggleIcon.textContent = '☀️';
+    toggleText.textContent = 'Light';
+  } else {
+    toggleIcon.textContent = '🌙';
+    toggleText.textContent = 'Dark';
+  }
+  
+  // Save preference
+  localStorage.setItem('darkMode', isNowDark);
+});
+</script>
+    
+</body>
 </html>
